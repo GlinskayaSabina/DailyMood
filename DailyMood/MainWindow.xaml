@@ -145,20 +145,38 @@
             
 
             <!--page-->
-            <Grid Grid.Row="1" Grid.Column="1">
-                <Border  Background="white" Padding="20">
+            <Grid x:Name="GridPage" Grid.Row="1" Grid.Column="1">
+                <Border  Background="white" Padding="10">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="15" Color="#9e95a3" ShadowDepth="2"></DropShadowEffect>
                     </Border.Effect>
                     <StackPanel>
+                        <Grid x:Name="GridJournalPage">
+                            <StackPanel>
+                                <TextBlock Text="Журнал"  HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="12 5 0 0"></TextBlock>
+                                <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" FontWeight="Thin" Margin="15 5 0 5"></TextBlock>
 
+                                <Button HorizontalContentAlignment="Left">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ContentControl/>
+                                            <svg:SvgViewbox  Source="./assets/emoji-1.svg" ></svg:SvgViewbox>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Отлично</TextBlock>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+
+                            </StackPanel>
+                        </Grid>
                     </StackPanel>
                 </Border>
             </Grid>
-            
-            
 
 
-         </Grid>
+
+
+
+        </Grid>
     </Grid>
 </Window>

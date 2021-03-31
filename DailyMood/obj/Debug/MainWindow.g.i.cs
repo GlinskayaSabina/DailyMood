@@ -108,6 +108,22 @@ namespace DailyMood {
         #line default
         #line hidden
         
+        
+        #line 148 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Grid GridPage;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 154 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Grid GridJournalPage;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -201,6 +217,12 @@ namespace DailyMood {
             return;
             case 10:
             this.GridHomePage = ((System.Windows.Controls.Grid)(target));
+            return;
+            case 11:
+            this.GridPage = ((System.Windows.Controls.Grid)(target));
+            return;
+            case 12:
+            this.GridJournalPage = ((System.Windows.Controls.Grid)(target));
             return;
             }
             this._contentLoaded = true;

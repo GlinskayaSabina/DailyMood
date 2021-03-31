@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/settings.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/emoji-5.svg")]
 
 
