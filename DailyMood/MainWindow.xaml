@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DailyMood"
         mc:Ignorable="d"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:svg="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:svg="http://sharpvectors.codeplex.com/svgc/"
         Title="Daylimood" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" >
 
     <Grid Background="#dccfda" Margin="0,0,0,-0.4">
@@ -94,10 +95,8 @@
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
 
-
-
             <!--left menu-->
-            <Border Grid.Row="1" Grid.Column="0" Background="white" Padding="10 10 0 0">
+            <Border Grid.Column="0" Background="white" Padding="10 10 0 0">
                 <StackPanel>
                     <!--Журнал кнопка -->
                     <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
@@ -145,21 +144,37 @@
             
 
             <!--page-->
-            <Grid x:Name="GridPage" Grid.Row="1" Grid.Column="1">
-                <Border  Background="white" Padding="10">
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="15" Color="#9e95a3" ShadowDepth="2"></DropShadowEffect>
-                    </Border.Effect>
-                    <StackPanel >
-                        <!-- старница Журнал-->
-                        <Grid HorizontalAlignment="Center" x:Name="GridJournalPage"  >
-                            <StackPanel Height="140" >
-                                <TextBlock Text="Журнал"  HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="12 5 0 0"></TextBlock>
-                                <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" FontWeight="Thin" Margin="15 5 0 5"></TextBlock>
+            <Border Grid.Column="1" >
+                
+                <Grid x:Name="GridPage">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
 
-                                <StackPanel Orientation="Horizontal">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="18*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30px"/>
+                            <RowDefinition Height="120px"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Text="Журнал" HorizontalAlignment="Right" FontSize="15" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0"></TextBlock>
+                        
+                        <Border Padding="10" Background="white" HorizontalAlignment="Center" CornerRadius="20" Grid.Row="1">
+                            <StackPanel >
+                                <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"/>
+                                <StackPanel Orientation="Horizontal" Margin="5">
                                     <!--Кнопки настроения-->
-                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
@@ -168,7 +183,7 @@
                                             </StackPanel>
                                         </Button.Content>
                                     </Button>
-                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
@@ -178,7 +193,7 @@
                                         </Button.Content>
                                     </Button>
 
-                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
@@ -188,7 +203,7 @@
                                         </Button.Content>
                                     </Button>
 
-                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
@@ -198,7 +213,7 @@
                                         </Button.Content>
                                     </Button>
 
-                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
@@ -209,20 +224,16 @@
                                     </Button>
 
                                 </StackPanel>
-                                
                             </StackPanel>
-                            <StackPanel>
-                                
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
-                </Border>
-            </Grid>
+                        </Border>
+
+
+                    </Grid>
 
 
 
-
-
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Window>
