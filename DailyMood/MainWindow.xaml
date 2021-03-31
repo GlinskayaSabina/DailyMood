@@ -1,0 +1,164 @@
+﻿<Window x:Class="DailyMood.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyMood"
+        mc:Ignorable="d"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:svg="http://sharpvectors.codeplex.com/svgc/"
+        Title="Daylimood" Height="450" Width="800" WindowStartupLocation="CenterScreen" >
+
+    <Grid Background="#dccfda" Margin="0,0,0,-0.4">
+
+        <Grid x:Name ="GridSingPage" Visibility="Hidden">
+            <!--Авторизация -->
+            <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="#9e95a3" ShadowDepth="0"></DropShadowEffect>
+                </Border.Effect>
+                <StackPanel>
+
+                    <TextBlock Text="Dailymood" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
+                    <Grid Margin="0 0 0 12">
+                        <Button x:Name="SingIn" Uid="1" Click="MainButtonClick" HorizontalAlignment="Left" Content="Войти" Width="140" Margin="79,0,0,0"></Button>
+                        <Button x:Name="SingUp" Uid="0" Click="MainButtonClick" HorizontalAlignment="Right" Content="Регистрация" Margin="0,0,77.4,0" Width="140" Style="{StaticResource MaterialDesignFlatLightBgButton}"></Button>
+                    </Grid>
+                </StackPanel>
+
+            </Border>
+        </Grid>
+        <!-- SingInPage-->
+        <Grid x:Name="GridSingInPage" Visibility="Hidden">
+            <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="#9e95a3" ShadowDepth="0"></DropShadowEffect>
+                </Border.Effect>
+                <StackPanel>
+                    <!-- backButton-->
+                    <Button Uid="2" Click="MainButtonClick" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                        <svg:SvgViewbox Source="./assets/arrow.svg" RenderTransformOrigin="0.5,0.5">
+                            <svg:SvgViewbox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-180"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </svg:SvgViewbox.RenderTransform>
+                        </svg:SvgViewbox>
+                    </Button>
+
+                    <TextBlock Text="Авторизация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
+                    <TextBox materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Uid="3" Click="MainButtonClick"  x:Name="LogIn" Margin="0 12 0 12" Content="Войти"></Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <!-- SingUpPage-->
+        <Grid x:Name="GridSingUpPage" Visibility="Hidden">
+            <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="#9e95a3" ShadowDepth="0"></DropShadowEffect>
+                </Border.Effect>
+                <StackPanel>
+                    <!-- backButton-->
+                    <Button Uid="2" Click="MainButtonClick" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                        <svg:SvgViewbox Source="./assets/arrow.svg" RenderTransformOrigin="0.5,0.5">
+                            <svg:SvgViewbox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-180"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </svg:SvgViewbox.RenderTransform>
+                        </svg:SvgViewbox>
+                    </Button>
+
+                    <TextBlock Text="Регистрация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
+                    <TextBox materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox materialDesign:HintAssist.Hint="Введите email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Uid="2" Click="MainButtonClick" x:Name="registration" Margin="0 12 0 12" Content="Зарегистрироваться"></Button>
+
+
+                </StackPanel>
+            </Border>
+        </Grid>
+        <!-- HomePage-->
+        <Grid x:Name="GridHomePage" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <!--left menu-->
+            <Border Grid.Row="1" Grid.Column="0" Background="white" Padding="10 10 0 0">
+                <StackPanel>
+                    <!--Журнал баттон -->
+                    <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <ContentControl/>
+                                <svg:SvgViewbox Height="19" Width="19" Source="./assets/journal.svg" Margin="0 4 4 0"></svg:SvgViewbox>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Журнал</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <!-- Статистика баттон-->
+                    <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <ContentControl/>
+                                <svg:SvgViewbox Height="19" Width="19" Source="./assets/statistics.svg" Margin="0 4 4 0"></svg:SvgViewbox>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Статистика</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <!-- календарь баттон-->
+                    <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <ContentControl/>
+                                <svg:SvgViewbox Height="19" Width="19" Source="./assets/calendar.svg" Margin="0 4 4 0"></svg:SvgViewbox>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Календарь</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <!--Настройки-->
+                    <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <ContentControl/>
+                                <svg:SvgViewbox Height="19" Width="18" Source="./assets/settings.svg" Margin="0 4 4 0"></svg:SvgViewbox>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Настройки</TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    
+                </StackPanel>
+            </Border>
+            
+
+            <!--page-->
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Border  Background="white" Padding="20">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#9e95a3" ShadowDepth="2"></DropShadowEffect>
+                    </Border.Effect>
+                    <StackPanel>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+            
+            
+
+
+         </Grid>
+    </Grid>
+</Window>
