@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DailyMood"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:svg="http://sharpvectors.codeplex.com/svgc/"
-        Title="Daylimood" Height="450" Width="800" WindowStartupLocation="CenterScreen" >
+        Title="Daylimood" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" >
 
     <Grid Background="#dccfda" Margin="0,0,0,-0.4">
 
@@ -99,7 +99,7 @@
             <!--left menu-->
             <Border Grid.Row="1" Grid.Column="0" Background="white" Padding="10 10 0 0">
                 <StackPanel>
-                    <!--Журнал баттон -->
+                    <!--Журнал кнопка -->
                     <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
@@ -109,7 +109,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <!-- Статистика баттон-->
+                    <!-- Статистика кнопка-->
                     <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
@@ -119,7 +119,7 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <!-- календарь баттон-->
+                    <!-- календарь кнопка-->
                     <Button HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
@@ -152,63 +152,67 @@
                     </Border.Effect>
                     <StackPanel >
                         <!-- старница Журнал-->
-                        <Grid HorizontalAlignment="Center" x:Name="GridJournalPage" >
+                        <Grid HorizontalAlignment="Center" x:Name="GridJournalPage"  >
                             <StackPanel Height="140" >
                                 <TextBlock Text="Журнал"  HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="12 5 0 0"></TextBlock>
                                 <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" FontWeight="Thin" Margin="15 5 0 5"></TextBlock>
-                                
-                                <StackPanel Orientation="Horizontal">
-                                  <!--Кнопки настроения-->
-                                <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Vertical">
-                                            <ContentControl/>
-                                            <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-1.svg" ></svg:SvgViewbox>
-                                            <TextBlock>Отлично</TextBlock>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
-                                <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
-                                <Button.Content>
-                                    <StackPanel Orientation="Vertical">
-                                        <ContentControl/>
-                                        <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-2.svg" ></svg:SvgViewbox>
-                                        <TextBlock>Хорошо</TextBlock>
-                                    </StackPanel>
-                                </Button.Content>
-                                </Button>
-                                    
-                                <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
-                                <Button.Content>
-                                     <StackPanel Orientation="Vertical">
-                                         <ContentControl/>
-                                         <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-3.svg" ></svg:SvgViewbox>
-                                          <TextBlock>Обычно</TextBlock>
-                                      </StackPanel>
-                                </Button.Content>
-                                </Button>
-                                    
-                                <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
-                                <Button.Content>
-                                      <StackPanel Orientation="Vertical">
-                                          <ContentControl/>
-                                          <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-4.svg" ></svg:SvgViewbox>
-                                          <TextBlock>Грустно</TextBlock>
-                                      </StackPanel>
-                                </Button.Content>
-                                </Button>
 
-                                <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Vertical">
-                                            <ContentControl/>
-                                            <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-5.svg" ></svg:SvgViewbox>
-                                            <TextBlock>Ужасно</TextBlock>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
+                                <StackPanel Orientation="Horizontal">
+                                    <!--Кнопки настроения-->
+                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Vertical">
+                                                <ContentControl/>
+                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-1.svg" ></svg:SvgViewbox>
+                                                <TextBlock>Отлично</TextBlock>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Vertical">
+                                                <ContentControl/>
+                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-2.svg" ></svg:SvgViewbox>
+                                                <TextBlock>Хорошо</TextBlock>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+
+                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Vertical">
+                                                <ContentControl/>
+                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-3.svg" ></svg:SvgViewbox>
+                                                <TextBlock>Обычно</TextBlock>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+
+                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Vertical">
+                                                <ContentControl/>
+                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-4.svg" ></svg:SvgViewbox>
+                                                <TextBlock>Грустно</TextBlock>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+
+                                    <Button Height="50" Width="90" Margin="12" HorizontalAlignment="Left">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Vertical">
+                                                <ContentControl/>
+                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-5.svg" ></svg:SvgViewbox>
+                                                <TextBlock>Ужасно</TextBlock>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
 
                                 </StackPanel>
+                                
+                            </StackPanel>
+                            <StackPanel>
+                                
                             </StackPanel>
                         </Grid>
                     </StackPanel>
