@@ -140,6 +140,13 @@
   <ItemGroup>
     <Resource Include="assets\settings.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\emoji-1.svg" />
+    <Resource Include="assets\emoji-2.svg" />
+    <Resource Include="assets\emoji-3.svg" />
+    <Resource Include="assets\emoji-4.svg" />
+    <Resource Include="assets\emoji-5.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
