@@ -74,7 +74,20 @@ namespace DailyMood
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Visible;
                     break;
-
+                case 4:
+                    GridJournalPage.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    GridJournalPage.Visibility = Visibility.Collapsed;
+                    break;
+                case 6:
+                    GridJournalPage.Visibility = Visibility.Collapsed;
+                    break;
+                case 7:
+                    GridJournalPage.Visibility = Visibility.Collapsed;
+                    break;
+                default:
+                    break;
 
 
             }
