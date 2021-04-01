@@ -242,26 +242,34 @@
                             </StackPanel>
                                
                         </Border>
-                            <Border Margin="0 20 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Center" CornerRadius="20">
+                            <Border Margin="0 20 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <StackPanel>
                                     <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история - расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-
+                                    <!-- Добавление текста--> 
                                     <StackPanel Orientation="Horizontal" >
-                                        <Button Margin="0 10 0 0 " Style="{StaticResource MaterialDesignFlatButton}">
-                                        <svg:SvgViewbox Source="./assets/camera.svg" Height="24"></svg:SvgViewbox>
-                                        </Button>
-                                        
-                                        <RichTextBox MinWidth="450"  MaxWidth="1100"></RichTextBox>
-                                        
+                                        <TextBox MaxLength="100" MaxLines="3" MinWidth="450"></TextBox>
+                                                                             
                                     </StackPanel>
-                                    
-
+                                    <!--некрасиво текстблок -->
                                     
                                 </StackPanel>
                             </Border>
+                            <Border Margin="0 20 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                                <StackPanel>
+                                    <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история - расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
+                                    <!-- Добавление картинки-->
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Button Margin="0 10 0 0 " Style="{StaticResource MaterialDesignFlatButton}">
+                                            <svg:SvgViewbox Source="./assets/camera.svg" Height="24"></svg:SvgViewbox>
+                                        </Button>
 
+                                    </StackPanel>
+                                    
 
-                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                        </Grid>
 
 
                     </Grid>
