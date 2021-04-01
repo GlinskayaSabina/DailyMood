@@ -164,7 +164,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30px"/>
                             <RowDefinition Height="120px"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="120px"/>
                             <RowDefinition Height="3*"/>
                         </Grid.RowDefinitions>
                         
@@ -226,7 +226,14 @@
 
                                 </StackPanel>
                             </StackPanel>
+                               
                         </Border>
+                            <Border Margin="0 20 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Center" CornerRadius="20">
+                                <StackPanel>
+                                    <TextBlock Text="Расскажите что-нибудь интересное"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
+                                    <TextBox></TextBox>
+                                </StackPanel>
+                            </Border>
 
 
                     </Grid>
