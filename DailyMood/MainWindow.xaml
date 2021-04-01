@@ -230,8 +230,8 @@
                         </Border>
                             <Border Margin="0 20 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Center" CornerRadius="20">
                                 <StackPanel>
-                                    <TextBlock Text="Расскажите что-нибудь интересное"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-                                    <TextBox></TextBox>
+                                    <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история- расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
+                                    <RichTextBox></RichTextBox>
                                 </StackPanel>
                             </Border>
 
