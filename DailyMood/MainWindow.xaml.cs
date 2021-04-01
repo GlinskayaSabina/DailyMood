@@ -76,15 +76,19 @@ namespace DailyMood
                     break;
                 case 4:
                     GridJournalPage.Visibility = Visibility.Visible;
+                    GridStaticticPage.Visibility = Visibility.Collapsed;
                     break;
                 case 5:
+                    GridStaticticPage.Visibility = Visibility.Visible;
                     GridJournalPage.Visibility = Visibility.Collapsed;
                     break;
                 case 6:
                     GridJournalPage.Visibility = Visibility.Collapsed;
+                    GridStaticticPage.Visibility = Visibility.Collapsed;
                     break;
                 case 7:
                     GridJournalPage.Visibility = Visibility.Collapsed;
+                    GridStaticticPage.Visibility = Visibility.Collapsed;
                     break;
                 default:
                     break;

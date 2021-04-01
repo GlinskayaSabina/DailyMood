@@ -147,7 +147,10 @@
             <Border Grid.Column="1" >
                 
                 <Grid x:Name="GridPage" Visibility="Visible">
+                    
+                    <!--Journal page -->
                     <Grid x:Name="GridJournalPage" Visibility="Visible">
+                        
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="18*"/>
@@ -172,34 +175,41 @@
                         
                         <Border Padding="10" Background="white" HorizontalAlignment="Left" CornerRadius="20" Grid.Row="1">
                             <StackPanel >
+                                
                                 <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"/>
                                 <StackPanel Orientation="Horizontal" Margin="5">
                                     <!--Кнопки настроения-->
                                     <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
+                                            
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
                                                 <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-1.svg" ></svg:SvgViewbox>
                                                 <TextBlock>Отлично</TextBlock>
+                                                
                                             </StackPanel>
                                         </Button.Content>
                                     </Button>
                                     <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
+                                            
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
                                                 <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-2.svg" ></svg:SvgViewbox>
                                                 <TextBlock>Хорошо</TextBlock>
+                                                
                                             </StackPanel>
                                         </Button.Content>
                                     </Button>
 
                                     <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
+                                            
                                             <StackPanel Orientation="Vertical">
                                                 <ContentControl/>
                                                 <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-3.svg" ></svg:SvgViewbox>
                                                 <TextBlock>Обычно</TextBlock>
+                                                
                                             </StackPanel>
                                         </Button.Content>
                                     </Button>
@@ -207,9 +217,11 @@
                                     <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
                                             <StackPanel Orientation="Vertical">
+                                                
                                                 <ContentControl/>
                                                 <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-4.svg" ></svg:SvgViewbox>
                                                 <TextBlock>Грустно</TextBlock>
+                                                
                                             </StackPanel>
                                         </Button.Content>
                                     </Button>
@@ -217,9 +229,11 @@
                                     <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
                                         <Button.Content>
                                             <StackPanel Orientation="Vertical">
+                                                
                                                 <ContentControl/>
                                                 <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-5.svg" ></svg:SvgViewbox>
                                                 <TextBlock>Ужасно</TextBlock>
+                                                
                                             </StackPanel>
                                         </Button.Content>
                                     </Button>
@@ -249,6 +263,38 @@
 
                     </Grid>
 
+
+                    </Grid>
+                    <!--Statistic page -->
+                    <Grid x:Name="GridStaticticPage" Visibility="Hidden">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="18*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="18*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="1" Grid.Column="1">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30px"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="3*"/>                            
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Статистика"  HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0" Grid.Column="1"></TextBlock>
+                            
+                        </Grid>
 
                     </Grid>
                 </Grid>

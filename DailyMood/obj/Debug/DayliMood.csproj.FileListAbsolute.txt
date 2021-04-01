@@ -74,3 +74,9 @@ D:\DailyMood\DailyMood\obj\Debug\DayliMood.csproj.CoreCompileInputs.cache
 D:\DailyMood\DailyMood\obj\Debug\DayliMood.csproj.CopyComplete
 D:\DailyMood\DailyMood\obj\Debug\DailyMood.exe
 D:\DailyMood\DailyMood\obj\Debug\DailyMood.pdb
+D:\DailyMood\DailyMood\bin\Debug\LiveCharts.dll
+D:\DailyMood\DailyMood\bin\Debug\LiveCharts.Wpf.dll
+D:\DailyMood\DailyMood\bin\Debug\LiveCharts.pdb
+D:\DailyMood\DailyMood\bin\Debug\LiveCharts.xml
+D:\DailyMood\DailyMood\bin\Debug\LiveCharts.Wpf.pdb
+D:\DailyMood\DailyMood\bin\Debug\LiveCharts.Wpf.xml
