@@ -50,8 +50,8 @@
                     </Button>
 
                     <TextBlock Text="Авторизация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
-                    <TextBox materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <Button Uid="3" Click="MainButtonClick"  x:Name="LogIn" Margin="0 12 0 12" Content="Войти"></Button>
                 </StackPanel>
             </Border>
@@ -78,10 +78,10 @@
                     </Button>
 
                     <TextBlock Text="Регистрация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
-                    <TextBox materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox materialDesign:HintAssist.Hint="Введите email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Cursor="IBeam"materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <Button Uid="2" Click="MainButtonClick" x:Name="registration" Margin="0 12 0 12" Content="Зарегистрироваться"></Button>
 
 
@@ -303,9 +303,22 @@
                             <Border Margin="5 10 5 10" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <StackPanel>
                                     <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история - расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-                                    <!-- -Заметка-->
+                                    
                                     <DockPanel >
-                                        <RichTextBox Cursor="IBeam" ></RichTextBox>
+                                        <StackPanel>
+                                            
+                                            <!-- Добавление картинки-->
+                                           
+                                                <Button Margin="0 10 0 0 " Style="{StaticResource MaterialDesignFlatButton}">
+                                                    <svg:SvgViewbox Source="./assets/camera.svg" Height="24"></svg:SvgViewbox>
+                                                </Button>
+
+                                            
+
+
+                                        </StackPanel>
+                                        <!-- -Заметка-->
+                                        <RichTextBox Cursor="IBeam"></RichTextBox>
 
                                     </DockPanel>
 
