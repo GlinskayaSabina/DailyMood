@@ -80,3 +80,17 @@ D:\DailyMood\DailyMood\bin\Debug\LiveCharts.pdb
 D:\DailyMood\DailyMood\bin\Debug\LiveCharts.xml
 D:\DailyMood\DailyMood\bin\Debug\LiveCharts.Wpf.pdb
 D:\DailyMood\DailyMood\bin\Debug\LiveCharts.Wpf.xml
+D:\DailyMood\DailyMood\bin\Debug\BCrypt.Net-Next.dll
+D:\DailyMood\DailyMood\bin\Debug\EntityFramework.dll
+D:\DailyMood\DailyMood\bin\Debug\EntityFramework.SqlServer.dll
+D:\DailyMood\DailyMood\bin\Debug\System.Buffers.dll
+D:\DailyMood\DailyMood\bin\Debug\System.Memory.dll
+D:\DailyMood\DailyMood\bin\Debug\System.Numerics.Vectors.dll
+D:\DailyMood\DailyMood\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\DailyMood\DailyMood\bin\Debug\BCrypt.Net-Next.xml
+D:\DailyMood\DailyMood\bin\Debug\EntityFramework.xml
+D:\DailyMood\DailyMood\bin\Debug\EntityFramework.SqlServer.xml
+D:\DailyMood\DailyMood\bin\Debug\System.Buffers.xml
+D:\DailyMood\DailyMood\bin\Debug\System.Memory.xml
+D:\DailyMood\DailyMood\bin\Debug\System.Numerics.Vectors.xml
+D:\DailyMood\DailyMood\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

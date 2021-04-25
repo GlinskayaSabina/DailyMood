@@ -11,7 +11,7 @@
 
     <Grid Background="#dccfda" Margin="0,0,0,-0.4">
 
-        <Grid x:Name ="GridSingPage" Visibility="Hidden">
+        <Grid x:Name ="GridSingPage" Visibility="Visible">
             <!--Авторизация -->
             <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
                 <Border.Effect>
@@ -50,9 +50,9 @@
                     </Button>
 
                     <TextBlock Text="Авторизация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
-                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <Button Uid="3" Click="MainButtonClick"  x:Name="LogIn" Margin="0 12 0 12" Content="Войти"></Button>
+                    <TextBox x:Name="LoginFieldAuth" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <PasswordBox x:Name="PasswordFieldAuth" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                    <Button Uid="3" Click="Authorization"  x:Name="LogIn" Margin="0 12 0 12" Content="Войти"></Button>
                 </StackPanel>
             </Border>
         </Grid>
@@ -78,18 +78,18 @@
                     </Button>
 
                     <TextBlock Text="Регистрация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
-                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox Cursor="IBeam" materialDesign:HintAssist.Hint="Введите email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <Button Uid="2" Click="MainButtonClick" x:Name="registration" Margin="0 12 0 12" Content="Зарегистрироваться"></Button>
+                    <TextBox x:Name="LoginFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="PasswordFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="ConfirmPasswordFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="EmailFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Uid="2" Click="Register" x:Name="registration" Margin="0 12 0 12" Content="Зарегистрироваться"></Button>
 
 
                 </StackPanel>
             </Border>
         </Grid>
         <!-- HomePage-->
-        <Grid x:Name="GridHomePage" Visibility="Visible">
+        <Grid x:Name="GridHomePage" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
@@ -149,202 +149,125 @@
                 <Grid x:Name="GridPage" Visibility="Visible">
                     
                     <!--Journal page -->
-                    <Grid x:Name="GridJournalPage" Visibility="Hidden">
-                        
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="18*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="GridJournalPage" Visibility="Visible">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="18*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="1" Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30px"/>
-                            <RowDefinition Height="120px"/>
-                            <RowDefinition Height="120px"/>
-                            <RowDefinition Height="3*"/>
-                        </Grid.RowDefinitions>
-                        
-                        <TextBlock Text="Журнал" HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0"></TextBlock>
-                        
-                        <Border Padding="10" Background="white" HorizontalAlignment="Left" CornerRadius="20" Grid.Row="1">
-                            <StackPanel >
-                                
-                                <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"/>
-                                <StackPanel Orientation="Horizontal" Margin="5">
-                                    <!--Кнопки настроения-->
-                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
-                                        <Button.Content>
-                                            
-                                            <StackPanel Orientation="Vertical">
-                                                <ContentControl/>
-                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-1.svg" ></svg:SvgViewbox>
-                                                <TextBlock>Отлично</TextBlock>
-                                                
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
-                                        <Button.Content>
-                                            
-                                            <StackPanel Orientation="Vertical">
-                                                <ContentControl/>
-                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-2.svg" ></svg:SvgViewbox>
-                                                <TextBlock>Хорошо</TextBlock>
-                                                
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-
-                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
-                                        <Button.Content>
-                                            
-                                            <StackPanel Orientation="Vertical">
-                                                <ContentControl/>
-                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-3.svg" ></svg:SvgViewbox>
-                                                <TextBlock>Обычно</TextBlock>
-                                                
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-
-                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
-                                        <Button.Content>
-                                            <StackPanel Orientation="Vertical">
-                                                
-                                                <ContentControl/>
-                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-4.svg" ></svg:SvgViewbox>
-                                                <TextBlock>Грустно</TextBlock>
-                                                
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-
-                                    <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
-                                        <Button.Content>
-                                            <StackPanel Orientation="Vertical">
-                                                
-                                                <ContentControl/>
-                                                <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-5.svg" ></svg:SvgViewbox>
-                                                <TextBlock>Ужасно</TextBlock>
-                                                
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-
-                                </StackPanel>
-                            </StackPanel>
-                               
-                        </Border>
-                            <Border Margin="0 20 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
-                                <StackPanel>
-                                    <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история - расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-                                    <!-- Добавление текста-->
-                                    <Button Uid="8" Click="MainButtonClick" x:Name="JournalPageNodeButton" Margin="0 10 0 0" Content="Рассказать"></Button>
-                                    <!--некрасиво текстблок -->
-                                    
-                                </StackPanel>
-                            </Border>
-                            <Border Margin="0 20 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
-                                <StackPanel>
-                                    <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история - расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-                                    <!-- Добавление картинки-->
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Button Margin="0 10 0 0 " Style="{StaticResource MaterialDesignFlatButton}">
-                                            <svg:SvgViewbox Source="./assets/camera.svg" Height="24"></svg:SvgViewbox>
-                                        </Button>
-
-                                    </StackPanel>
-                                    
-
-                                </StackPanel>
-                            </Border>
-
-                        </Grid>
-
-
-                    </Grid>
-                    
-                    
-                    
-                    <!--NodePage -->
-                    <Grid x:Name="GrideNodePage" Visibility="Visible">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="18*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="18*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="1"   Grid.Column="1" >
+                        <Grid Grid.Row="1" Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="40px"/>
-                                <RowDefinition Height="40px"/>
-                                <RowDefinition/>
+                                <RowDefinition Height="30px"/>
+                                <RowDefinition Height="120px"/>
+                                <RowDefinition Height="120px"/>
+                                <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
 
-                            <DockPanel Grid.Column="0" Grid.Row="0">
-                            <Button Uid="9" Margin="0 5 0 0 " Click="MainButtonClick" HorizontalAlignment="Left"  Style="{StaticResource MaterialDesignFlatButton}">
-                                <svg:SvgViewbox Source="./assets/arrow.svg" RenderTransformOrigin="0.5,0.5">
-                                    <svg:SvgViewbox.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform Angle="-180"/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </svg:SvgViewbox.RenderTransform>
-                                </svg:SvgViewbox>
-                            </Button>
+                            <TextBlock Text="Журнал" HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0"></TextBlock>
 
-                            <TextBlock Text="Заметки охотника"  HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 10 5 12" Grid.Row="0" Grid.Column="1"></TextBlock>
-                        </DockPanel>
-                        <DockPanel Grid.Row="1">
-                            <TextBlock MaxWidth="1200" MinWidth="500" Text="Добавить заметку"  HorizontalAlignment="Left" FontSize="20" Margin="13 10 0 0" FontWeight="Thin" ></TextBlock>
-                        </DockPanel>
-                        <DockPanel Grid.Row="2">
-                            <Border Margin="5 10 5 10" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                            <Border Padding="10" Background="white" HorizontalAlignment="Left" CornerRadius="20" Grid.Row="1">
+                                <StackPanel >
+
+                                    <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"/>
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <!--Кнопки настроения-->
+                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                            <Button.Content>
+
+                                                <StackPanel Orientation="Vertical">
+                                                    <ContentControl/>
+                                                    <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-1.svg" ></svg:SvgViewbox>
+                                                    <TextBlock>Отлично</TextBlock>
+
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                            <Button.Content>
+
+                                                <StackPanel Orientation="Vertical">
+                                                    <ContentControl/>
+                                                    <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-2.svg" ></svg:SvgViewbox>
+                                                    <TextBlock>Хорошо</TextBlock>
+
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                            <Button.Content>
+
+                                                <StackPanel Orientation="Vertical">
+                                                    <ContentControl/>
+                                                    <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-3.svg" ></svg:SvgViewbox>
+                                                    <TextBlock>Обычно</TextBlock>
+
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Vertical">
+
+                                                    <ContentControl/>
+                                                    <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-4.svg" ></svg:SvgViewbox>
+                                                    <TextBlock>Грустно</TextBlock>
+
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Vertical">
+
+                                                    <ContentControl/>
+                                                    <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-5.svg" ></svg:SvgViewbox>
+                                                    <TextBlock>Ужасно</TextBlock>
+
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </Border>
+                            <Border Margin="0 20 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <StackPanel>
                                     <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история - расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-                                    
-                                    <DockPanel >
-                                        <StackPanel>
-                                            
-                                            
-                                                <!--Добавление картинки-->
-                                                <Button Margin="0 10 0 0 " Style="{StaticResource MaterialDesignFlatButton}">
-                                                    <svg:SvgViewbox Source="./assets/camera.svg" Height="24"></svg:SvgViewbox>
-                                                </Button>
+                                    <!-- Добавление текста-->
+                                    <TextBox x:Name="AddNoteTexBox" MaxLength="170"></TextBox>
 
-                                            
+                                </StackPanel>
+                            </Border>
+                            <Border Margin="0 20 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                                <StackPanel>
+                                    <TextBlock MaxWidth="1200" MinWidth="500" Text="Сохраните воспоминания, добавьте фото"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
+                                    <!-- Добавление картинки-->
+
+                                    <Button x:Name="AddImageToNote" Margin="20" Content="Довабить фото"></Button>
 
 
-                                        </StackPanel>
-                                        
-                                        <!---Заметка-->
-                                        <RichTextBox Cursor="IBeam"></RichTextBox>
-
-                                    </DockPanel>
 
 
                                 </StackPanel>
                             </Border>
 
-                        </DockPanel>
-
                         </Grid>
+
+
                     </Grid>
-                    
+
                     <!--Statistic page -->
                     <Grid x:Name="GridStaticticPage" Visibility="Hidden">
                         <Grid.ColumnDefinitions>
