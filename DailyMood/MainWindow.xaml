@@ -89,7 +89,7 @@
             </Border>
         </Grid>
         <!-- HomePage-->
-        <Grid x:Name="GridHomePage" Visibility="Hidden">
+        <Grid x:Name="GridHomePage" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
@@ -166,9 +166,10 @@
                         <Grid Grid.Row="1" Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30px"/>
-                                <RowDefinition Height="120px"/>
-                                <RowDefinition Height="120px"/>
-                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="110px"/>
+                                <RowDefinition Height="100px"/>
+                                <RowDefinition Height="110px"/>
+                                <RowDefinition Height="100px"/>
                             </Grid.RowDefinitions>
 
                             <TextBlock Text="Журнал" HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0"></TextBlock>
@@ -179,7 +180,7 @@
                                     <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"/>
                                     <StackPanel Orientation="Horizontal" Margin="5">
                                         <!--Кнопки настроения-->
-                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                        <Button Uid="5" Height="50" Width="90" Margin="6" HorizontalAlignment="Left" Click="EmojiSelect">
                                             <Button.Content>
 
                                                 <StackPanel Orientation="Vertical">
@@ -190,7 +191,7 @@
                                                 </StackPanel>
                                             </Button.Content>
                                         </Button>
-                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                        <Button Uid="4" Height="50" Width="90" Margin="6" HorizontalAlignment="Left" Click="EmojiSelect">
                                             <Button.Content>
 
                                                 <StackPanel Orientation="Vertical">
@@ -202,7 +203,7 @@
                                             </Button.Content>
                                         </Button>
 
-                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                        <Button Uid="3" Height="50" Width="90" Margin="6" HorizontalAlignment="Left" Click="EmojiSelect">
                                             <Button.Content>
 
                                                 <StackPanel Orientation="Vertical">
@@ -214,19 +215,19 @@
                                             </Button.Content>
                                         </Button>
 
-                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                        <Button Uid="2" Height="50" Width="90" Margin="6" HorizontalAlignment="Left" Click="EmojiSelect">
                                             <Button.Content>
                                                 <StackPanel Orientation="Vertical">
 
                                                     <ContentControl/>
-                                                    <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-4.svg" ></svg:SvgViewbox>
+                                                    <svg:SvgViewbox Height="20" Width="20" Source="./assets/emoji-4.svg"></svg:SvgViewbox>
                                                     <TextBlock>Грустно</TextBlock>
 
                                                 </StackPanel>
                                             </Button.Content>
                                         </Button>
 
-                                        <Button Height="50" Width="90" Margin="6" HorizontalAlignment="Left">
+                                        <Button Uid="1" Height="50" Width="90" Margin="6" HorizontalAlignment="Left" Click="EmojiSelect">
                                             <Button.Content>
                                                 <StackPanel Orientation="Vertical">
 
@@ -242,7 +243,7 @@
                                 </StackPanel>
 
                             </Border>
-                            <Border Margin="0 20 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                            <Border Margin="0 10 0 0" Grid.Row="2"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <StackPanel>
                                     <TextBlock MaxWidth="1200" MinWidth="500" Text="Что ни день, то новая история - расскажите вашу."  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
                                     <!-- Добавление текста-->
@@ -250,17 +251,18 @@
 
                                 </StackPanel>
                             </Border>
-                            <Border Margin="0 20 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                            <Border Margin="0 10 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <StackPanel>
                                     <TextBlock MaxWidth="1200" MinWidth="500" Text="Сохраните воспоминания, добавьте фото"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
                                     <!-- Добавление картинки-->
 
-                                    <Button x:Name="AddImageToNote" Margin="20" Content="Довабить фото"></Button>
-
-
-
+                                    <Button x:Name="AddImageToNote" Margin="20" Content="Добавить фото"></Button>
 
                                 </StackPanel>
+                            </Border>
+                            <Border  Margin="0 10 0 0" Grid.Row="4"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                                <Button Click="SaveNote">Сохранить заметку</Button>
+                               
                             </Border>
 
                         </Grid>

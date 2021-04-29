@@ -20,5 +20,7 @@ namespace DailyMood.Models
         public DataEntity() : base("DailyMoodDataBase") { }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Statistic> Statistics { get; set; }
     }
 }

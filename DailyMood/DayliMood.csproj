@@ -135,6 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\DataEntity.cs" />
+    <Compile Include="Models\Statistic.cs" />
+    <Compile Include="Models\StatisticOperations.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -22,27 +22,15 @@ namespace DailyMood
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
+        private int _emoji = 0;
+        private int _userid;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void MainButtonClick(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
@@ -102,11 +90,6 @@ namespace DailyMood
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private async void Authorization(object sender, RoutedEventArgs e)
         {
             string login = LoginFieldAuth.Text;
@@ -122,6 +105,7 @@ namespace DailyMood
                         GridSingPage.Visibility = Visibility.Collapsed;
                         GridSingInPage.Visibility = Visibility.Collapsed;
                         GridHomePage.Visibility = Visibility.Visible;
+                        _userid = await UserOperations.GetUserId(login);
                         break;
                     case OperationsResponse.UserNotExists:
                         MessageBox.Show("Неверный логин или пароль");
@@ -169,6 +153,31 @@ namespace DailyMood
                     MessageBox.Show("Необработанное исключение в функции Authorization");
                     break;
             }
+        }
+
+
+        private void EmojiSelect(object sender, RoutedEventArgs e)
+        {
+            _emoji = Int32.Parse((sender as Button).Uid);
+        }
+
+        private async void SaveNote(object sender, RoutedEventArgs e)
+        {
+            string history = AddNoteTexBox.Text;
+
+            if (_emoji != 0)
+            {
+                OperationsResponse responce = await StatisticOperations.AddNote(history, _emoji, _userid);
+                if (responce == OperationsResponse.Ok)
+                {
+                    MessageBox.Show("Заметка была добавлена");
+                }
+                else if (responce == OperationsResponse.ServerError)
+                {
+                    MessageBox.Show("Server error");
+                }
+            }
+            else MessageBox.Show("Ошибка. Выберите эмоцию");
         }
     }
     
