@@ -11,7 +11,7 @@
 
     <Grid Background="#dccfda" Margin="0,0,0,-0.4">
 
-        <Grid x:Name ="GridSingPage" Visibility="Visible">
+        <Grid x:Name ="GridSingPage" Visibility="Hidden">
             <!--Авторизация -->
             <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
                 <Border.Effect>
@@ -81,7 +81,6 @@
                     <TextBox x:Name="LoginFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <TextBox x:Name="PasswordFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <TextBox x:Name="ConfirmPasswordFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox x:Name="EmailFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <Button Uid="2" Click="Register" x:Name="registration" Margin="0 12 0 12" Content="Зарегистрироваться"></Button>
 
 
@@ -89,7 +88,7 @@
             </Border>
         </Grid>
         <!-- HomePage-->
-        <Grid x:Name="GridHomePage" Visibility="Collapsed">
+        <Grid x:Name="GridHomePage" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
@@ -302,8 +301,59 @@
                         </Grid>
 
                     </Grid>
+                    <!--Setting page -->
+                    <Grid x:Name="GridSettingPage" Visibility="Hidden" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="11*" />
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="11*"/>
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                                <Button Uid="8"  Click="MainButtonClick" Content="Выйти из аккаунта"></Button>
+                            </Border>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Border>
+        </Grid>
+        <Grid x:Name="GridAdminPage" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="11*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                    <Button Uid="9"  Click="MainButtonClick" Content="Выйти из аккаунта"></Button>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

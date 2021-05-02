@@ -69,7 +69,7 @@ namespace WaterBalance.Models.DataOperations
                         return OperationsResponse.UserExists;
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     return OperationsResponse.ServerError;
                 }
@@ -91,8 +91,7 @@ namespace WaterBalance.Models.DataOperations
                         {
                             if (user.Login == login)
                             {
-                                //if (BCrypt.Net.BCrypt.Verify(password, user.HashedPassword)) authorizated = true;
-                                if (password == user.HashedPassword) authorizated = true;
+                                if (BCrypt.Net.BCrypt.Verify(password, user.HashedPassword)) authorizated = true;
                             }
                         });
 

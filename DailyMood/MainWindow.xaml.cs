@@ -43,8 +43,6 @@ namespace DailyMood
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridSingPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Collapsed;
-
-
                     break;
                 case 1:
                     GridSingUpPage.Visibility = Visibility.Collapsed;
@@ -68,20 +66,36 @@ namespace DailyMood
                 case 4:
                     GridJournalPage.Visibility = Visibility.Visible;
                     GridStaticticPage.Visibility = Visibility.Collapsed;
+                    GridSettingPage.Visibility = Visibility.Collapsed;
                     break;
                 case 5:
                     GridStaticticPage.Visibility = Visibility.Visible;
                     GridJournalPage.Visibility = Visibility.Collapsed;
+                    GridSettingPage.Visibility = Visibility.Collapsed;
                     break;
                 case 6:
                     GridJournalPage.Visibility = Visibility.Collapsed;
                     GridStaticticPage.Visibility = Visibility.Collapsed;
+                    GridSettingPage.Visibility = Visibility.Collapsed;
                     break;
                 case 7:
                     GridJournalPage.Visibility = Visibility.Collapsed;
                     GridStaticticPage.Visibility = Visibility.Collapsed;
+                    GridSettingPage.Visibility = Visibility.Visible;
                     break;
-                
+                case 8:
+                    GridSingUpPage.Visibility = Visibility.Collapsed;
+                    GridSingInPage.Visibility = Visibility.Collapsed;
+                    GridSingPage.Visibility = Visibility.Visible;
+                    GridHomePage.Visibility = Visibility.Collapsed;
+                    break;
+                case 9:
+                    GridSingUpPage.Visibility = Visibility.Collapsed;
+                    GridSingInPage.Visibility = Visibility.Collapsed;
+                    GridSingPage.Visibility = Visibility.Visible;
+                    GridAdminPage.Visibility = Visibility.Collapsed;
+                    break;
+
                 default:
                     break;
 
@@ -96,7 +110,9 @@ namespace DailyMood
             string password = PasswordFieldAuth.Password;
             if (login != "" && password != "")
             {
+                Loading(true);
                 OperationsResponse response = await UserOperations.CheckAuthorization(login, password);
+                Loading(false);
 
                 switch(response)
                 {
@@ -106,6 +122,8 @@ namespace DailyMood
                         GridSingInPage.Visibility = Visibility.Collapsed;
                         GridHomePage.Visibility = Visibility.Visible;
                         _userid = await UserOperations.GetUserId(login);
+                        LoginFieldAuth.Text = "";
+                        PasswordFieldAuth.Password = "";
                         break;
                     case OperationsResponse.UserNotExists:
                         MessageBox.Show("Неверный логин или пароль");
@@ -135,8 +153,11 @@ namespace DailyMood
                 MessageBox.Show("Пароли не совпадают");
                 return;
             }
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, 10);
 
-            OperationsResponse response = await UserOperations.CreateUser(login, password);
+            Loading(true);
+            OperationsResponse response = await UserOperations.CreateUser(login, hashedPassword);
+            Loading(false);
 
             switch(response)
             {
@@ -145,6 +166,9 @@ namespace DailyMood
                     GridSingPage.Visibility = Visibility.Collapsed;
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Visible;
+                    LoginFieldReg.Text = "";
+                    PasswordFieldReg.Text = "";
+                    ConfirmPasswordFieldReg.Text = "";
                     break;
                 case OperationsResponse.UserExists:
                     MessageBox.Show("Пользователь с таким логином уже существует!");
@@ -152,6 +176,34 @@ namespace DailyMood
                 default:
                     MessageBox.Show("Необработанное исключение в функции Authorization");
                     break;
+            }
+        }
+
+        private void Loading(bool isLoading)
+        {
+            if (isLoading)
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait; // set the cursor to loading spinner
+
+                LoginFieldAuth.IsEnabled = false;
+                PasswordFieldAuth.IsEnabled = false;
+                LoginFieldReg.IsEnabled = false;
+                PasswordFieldReg.IsEnabled = false;
+                ConfirmPasswordFieldReg.IsEnabled = false;
+                LogIn.IsEnabled = false;
+                registration.IsEnabled = false;
+            }
+            else
+            {
+                Mouse.OverrideCursor = null; // set the cursor back to arrow
+
+                LoginFieldAuth.IsEnabled = true;
+                PasswordFieldAuth.IsEnabled = true;
+                LoginFieldReg.IsEnabled = true;
+                PasswordFieldReg.IsEnabled = true;
+                ConfirmPasswordFieldReg.IsEnabled = true;
+                LogIn.IsEnabled = true;
+                registration.IsEnabled = true;
             }
         }
 
