@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DailyMood.Models;
+using LiveCharts;
+using LiveCharts.Wpf;
 using WaterBalance.Models.DataOperations;
 
 namespace DailyMood
@@ -26,9 +28,24 @@ namespace DailyMood
         private int _emoji = 0;
         private int _userid;
 
+        public List<Statistic> StatisticList { get; set; }
+        
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void UpdateChart()
+        {
+            var a = StatisticList.Select(e => e.Emoji);
+            SeriesCollection c = new SeriesCollection {
+                new LineSeries
+                {
+                    Values = new ChartValues<int>(a)
+                }
+            };
+            Chart.Series = c;
         }
 
         private void MainButtonClick(object sender, RoutedEventArgs e)
@@ -67,13 +84,16 @@ namespace DailyMood
                     GridJournalPage.Visibility = Visibility.Visible;
                     GridStaticticPage.Visibility = Visibility.Collapsed;
                     GridSettingPage.Visibility = Visibility.Collapsed;
+                    GridNotesPage.Visibility = Visibility.Collapsed;
                     break;
                 case 5:
                     GridStaticticPage.Visibility = Visibility.Visible;
                     GridJournalPage.Visibility = Visibility.Collapsed;
                     GridSettingPage.Visibility = Visibility.Collapsed;
+                    GridNotesPage.Visibility = Visibility.Collapsed;
                     break;
                 case 6:
+                    GridNotesPage.Visibility = Visibility.Visible;
                     GridJournalPage.Visibility = Visibility.Collapsed;
                     GridStaticticPage.Visibility = Visibility.Collapsed;
                     GridSettingPage.Visibility = Visibility.Collapsed;
@@ -82,6 +102,7 @@ namespace DailyMood
                     GridJournalPage.Visibility = Visibility.Collapsed;
                     GridStaticticPage.Visibility = Visibility.Collapsed;
                     GridSettingPage.Visibility = Visibility.Visible;
+                    GridNotesPage.Visibility = Visibility.Collapsed;
                     break;
                 case 8:
                     GridSingUpPage.Visibility = Visibility.Collapsed;
@@ -122,6 +143,9 @@ namespace DailyMood
                         GridSingInPage.Visibility = Visibility.Collapsed;
                         GridHomePage.Visibility = Visibility.Visible;
                         _userid = await UserOperations.GetUserId(login);
+                        StatisticList = await StatisticOperations.GetUserStatistics(_userid);
+                        UpdateChart();
+                        Notes.ItemsSource = StatisticList;
                         LoginFieldAuth.Text = "";
                         PasswordFieldAuth.Password = "";
                         break;
@@ -223,6 +247,9 @@ namespace DailyMood
                 if (responce == OperationsResponse.Ok)
                 {
                     MessageBox.Show("Заметка была добавлена");
+                    StatisticList = await StatisticOperations.GetUserStatistics(_userid);
+                    Notes.ItemsSource = StatisticList;
+                    UpdateChart();
                 }
                 else if (responce == OperationsResponse.ServerError)
                 {

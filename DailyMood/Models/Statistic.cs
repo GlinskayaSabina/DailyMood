@@ -22,5 +22,6 @@ namespace DailyMood.Models
         public string History { get; set; }
         public int Emoji { get; set; }
         public int UserId { get; set; }
+        public string Date { get; set; }
     }
 }

@@ -42,7 +42,8 @@ namespace DailyMood.Models
                         {
                             History = history,
                             Emoji = emoji,
-                            UserId = userid
+                            UserId = userid,
+                            Date = DateTime.Now.ToString(@"dd-mm-yyyy")
                         };
                         db.Statistics.Add(stat);
                         db.SaveChanges();

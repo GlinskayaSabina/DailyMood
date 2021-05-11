@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:DailyMood"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        xmlns:svg="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:svg="http://sharpvectors.codeplex.com/svgc/" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         Title="Daylimood" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" >
 
     <Grid Background="#dccfda" Margin="0,0,0,-0.4">
 
-        <Grid x:Name ="GridSingPage" Visibility="Hidden">
+        <Grid x:Name ="GridSingPage" Visibility="Visible">
             <!--Авторизация -->
             <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
                 <Border.Effect>
@@ -88,7 +88,7 @@
             </Border>
         </Grid>
         <!-- HomePage-->
-        <Grid x:Name="GridHomePage" Visibility="Hidden">
+        <Grid x:Name="GridHomePage" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
@@ -117,13 +117,13 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <!-- календарь кнопка-->
+                    <!-- Notes кнопка-->
                     <Button Uid="6" Click="MainButtonClick" HorizontalContentAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <ContentControl/>
                                 <svg:SvgViewbox Height="19" Width="19" Source="./assets/calendar.svg" Margin="0 4 4 0"></svg:SvgViewbox>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Календарь</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Записки</TextBlock>
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -148,7 +148,7 @@
                 <Grid x:Name="GridPage" Visibility="Visible">
                     
                     <!--Journal page -->
-                    <Grid x:Name="GridJournalPage" Visibility="Visible">
+                    <Grid x:Name="GridJournalPage" Visibility="Collapsed">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -168,7 +168,6 @@
                                 <RowDefinition Height="110px"/>
                                 <RowDefinition Height="100px"/>
                                 <RowDefinition Height="110px"/>
-                                <RowDefinition Height="100px"/>
                             </Grid.RowDefinitions>
 
                             <TextBlock Text="Журнал" HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0"></TextBlock>
@@ -250,16 +249,8 @@
 
                                 </StackPanel>
                             </Border>
-                            <Border Margin="0 10 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
-                                <StackPanel>
-                                    <TextBlock MaxWidth="1200" MinWidth="500" Text="Сохраните воспоминания, добавьте фото"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-                                    <!-- Добавление картинки-->
-
-                                    <Button x:Name="AddImageToNote" Margin="20" Content="Добавить фото"></Button>
-
-                                </StackPanel>
-                            </Border>
-                            <Border  Margin="0 10 0 0" Grid.Row="4"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                           
+                            <Border  Margin="0 10 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <Button Click="SaveNote">Сохранить заметку</Button>
                                
                             </Border>
@@ -283,26 +274,46 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="1" Grid.Column="1">
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30px"/>
-                                <RowDefinition Height="3*"/>
-                                <RowDefinition Height="3*"/>                            
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Text="Статистика"  HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0" Grid.Column="1"></TextBlock>
-                            
-                        </Grid>
-
+                        <lvc:CartesianChart x:Name="Chart" Grid.Row="1" Grid.Column="1"/>
                     </Grid>
+
+                    <!--Notes page-->
+                    <Grid x:Name="GridNotesPage" Visibility="Visible">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="18*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="18*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollViewer 
+                            Grid.Row="1" 
+                            Grid.Column="1" 
+                            Style="{StaticResource MaterialDesignScrollViewer}"
+                            VerticalScrollBarVisibility="Auto">
+                            <ItemsControl x:Name="Notes">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="0 10" BorderBrush="Black" BorderThickness="0 0 0 1">
+                                            <StackPanel>
+                                                <TextBlock Grid.Row="0" Text="{Binding Path=Date}"/>
+                                                <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.RowSpan="2" Text="{Binding Path=History}"/>
+                                            </StackPanel>
+                                        </Border>
+                                        
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                    
                     <!--Setting page -->
-                    <Grid x:Name="GridSettingPage" Visibility="Hidden" >
+                    <Grid x:Name="GridSettingPage" Visibility="Collapsed" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="11*" />
@@ -330,7 +341,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Grid x:Name="GridAdminPage" Visibility="Visible">
+        <Grid x:Name="GridAdminPage" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="11*"/>
