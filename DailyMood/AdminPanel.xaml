@@ -1,0 +1,43 @@
+﻿<Window x:Class="DailyMood.AdminPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyMood"
+        mc:Ignorable="d"
+        Title="Admin Panel" Height="600" Width="800">
+    <Grid Background="#dccfda">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60px"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="60px"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px"/>
+            <RowDefinition/>
+            <RowDefinition Height="80px"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer 
+                            Grid.Row="1" 
+                            Grid.Column="1" 
+                            Style="{StaticResource MaterialDesignScrollViewer}"
+                            VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="Accounts">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="0 10 0 0" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontWeight="Bold" Text="{Binding Path=Name}"/>
+                                <TextBlock Margin="20 0 0 0" Text="{Binding Path=Birthday}"/>
+                                <TextBlock Margin="20 0 0 0" Text="{Binding Path=Phone}"/>
+                                <TextBlock Margin="20 0 0 0" Text="{Binding Path=UserId}"/>
+                            </StackPanel>
+                        </Border>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -17,3 +17,12 @@ create table [Statistics]
 [UserId] int foreign key references Users (Id),
 [Date] nvarchar(12) not null
 ) 
+
+create table Accounts
+(
+[Id] int identity(1,1) primary key,
+[Name] nvarchar(100) not null,
+[Birthday] date not null,
+[Phone] nvarchar(20) not null,
+[UserId] int foreign key references Users (Id)
+)

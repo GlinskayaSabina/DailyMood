@@ -27,6 +27,7 @@ namespace DailyMood
 
         private int _emoji = 0;
         private int _userid;
+        private string _login = "";
 
         public List<Statistic> StatisticList { get; set; }
         
@@ -46,6 +47,38 @@ namespace DailyMood
                 }
             };
             Chart.Series = c;
+        }
+
+        public string Emoji
+        {
+            get
+            {
+                switch(_emoji)
+                {
+                    case 1:
+                        return "1";
+                        break;
+                    case 2:
+                        return "2";
+                        break;
+                    case 3:
+                        return "3";
+                        break;
+                    case 4:
+                        return "4";
+                        break;
+                    case 5:
+                        return "5";
+                        break;
+                    default:
+                        return "Выберите настроение";
+                        break;
+                }
+            }
+            set
+            {
+                _emoji = Int32.Parse(value);
+            }
         }
 
         private void MainButtonClick(object sender, RoutedEventArgs e)
@@ -128,6 +161,7 @@ namespace DailyMood
         private async void Authorization(object sender, RoutedEventArgs e)
         {
             string login = LoginFieldAuth.Text;
+            _login = login;
             string password = PasswordFieldAuth.Password;
             if (login != "" && password != "")
             {
@@ -181,6 +215,8 @@ namespace DailyMood
 
             Loading(true);
             OperationsResponse response = await UserOperations.CreateUser(login, hashedPassword);
+            int id = await UserOperations.GetUserId(login);
+
             Loading(false);
 
             switch(response)
@@ -190,6 +226,7 @@ namespace DailyMood
                     GridSingPage.Visibility = Visibility.Collapsed;
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Visible;
+                    await AccountOperations.CreateAccount(id);
                     LoginFieldReg.Text = "";
                     PasswordFieldReg.Text = "";
                     ConfirmPasswordFieldReg.Text = "";
@@ -234,7 +271,8 @@ namespace DailyMood
 
         private void EmojiSelect(object sender, RoutedEventArgs e)
         {
-            _emoji = Int32.Parse((sender as Button).Uid);
+            Emoji = (sender as Button).Uid;
+            MyState.Text = Emoji;
         }
 
         private async void SaveNote(object sender, RoutedEventArgs e)
@@ -257,6 +295,31 @@ namespace DailyMood
                 }
             }
             else MessageBox.Show("Ошибка. Выберите эмоцию");
+        }
+
+        private void OpenAdminPanel(object sender, RoutedEventArgs e)
+        {
+            AdminPanel ap = new AdminPanel();
+            ap.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            ap.Show();
+        }
+
+        private async void SaveAccount(object sender, RoutedEventArgs e)
+        {
+            string personname = PersonNameAccount.Text;
+            string personbirthday = PersonBirthdayAccount.Text;
+            string persontelegram = PersonTelegramAccount.Text;
+
+            int userId = await UserOperations.GetUserId(_login);
+
+            OperationsResponse responce = await AccountOperations.EditAccount(userId, personname, personbirthday, persontelegram);
+
+            if (responce == OperationsResponse.ServerError) MessageBox.Show("Server error");
+
+            PersonNameAccount.Text = "";
+            PersonBirthdayAccount.Text = "";
+            PersonTelegramAccount.Text = "";
+
         }
     }
     

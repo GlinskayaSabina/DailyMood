@@ -94,3 +94,5 @@ D:\DailyMood\DailyMood\bin\Debug\System.Buffers.xml
 D:\DailyMood\DailyMood\bin\Debug\System.Memory.xml
 D:\DailyMood\DailyMood\bin\Debug\System.Numerics.Vectors.xml
 D:\DailyMood\DailyMood\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\DailyMood\DailyMood\obj\Debug\AdminPanel.g.cs
+D:\DailyMood\DailyMood\obj\Debug\AdminPanel.baml

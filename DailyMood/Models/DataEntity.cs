@@ -22,5 +22,7 @@ namespace DailyMood.Models
         public DbSet<User> Users { get; set; }
 
         public DbSet<Statistic> Statistics { get; set; }
+
+        public DbSet<Account> Accounts { get; set; }
     }
 }

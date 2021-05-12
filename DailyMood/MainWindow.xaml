@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:svg="http://sharpvectors.codeplex.com/svgc/" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        Title="Daylimood" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" >
+        Title="Daylimood" MinHeight="450" MinWidth="1000" WindowStartupLocation="CenterScreen" Width="1000" >
 
   
         <Grid Background="#dccfda" Margin="0,0,0,-0.4">
@@ -171,9 +171,14 @@
                                 <RowDefinition Height="110px"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Text="Журнал" HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Margin="0 0 0 12" Grid.Row="0"></TextBlock>
-
-                            <Border Padding="10" Background="white" HorizontalAlignment="Left" CornerRadius="20" Grid.Row="1">
+                            <Border Grid.Row="1" HorizontalAlignment="Right" Width="170" Background="white" CornerRadius="20">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock>Ваше настроение</TextBlock>
+                                    <TextBlock x:Name="MyState" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <Border Padding="10" Background="white" HorizontalAlignment="Left" CornerRadius="20" Grid.Row="1" Width="530">
                                 <StackPanel >
 
                                     <TextBlock Text="Как вы себя чувствуете?"  HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"/>
@@ -279,7 +284,7 @@
                     </Grid>
 
                     <!--Notes page-->
-                    <Grid x:Name="GridNotesPage" Visibility="Visible">
+                    <Grid x:Name="GridNotesPage" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="18*"/>
@@ -303,8 +308,7 @@
                                         <Border Margin="0 10 0 0" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                             <StackPanel>
                                                 <DockPanel>
-                                                    <TextBlock>Дата: </TextBlock>
-                                                    <TextBlock FontWeight="Bold" Grid.Row="0" Text="{Binding Path=Date}"/>
+                                                    <TextBlock>Дата: <TextBlock FontWeight="Bold" Grid.Row="0" Text="{Binding Path=Date}"/></TextBlock>
                                                 </DockPanel>
                                                 <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.RowSpan="2" Text="{Binding Path=History}"/>
                                             </StackPanel>
@@ -317,7 +321,7 @@
                     </Grid>
                     
                     <!--Setting page -->
-                    <Grid x:Name="GridSettingPage" Visibility="Collapsed" >
+                    <Grid x:Name="GridSettingPage" Visibility="Visible" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="11*" />
@@ -337,8 +341,43 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Border Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
-                                <Button Uid="8"  Click="MainButtonClick" Content="Выйти из аккаунта"></Button>
+                            <Border Margin="10" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+                                <StackPanel>
+                                    <Button Margin="0 10 0 10" Uid="8"  Click="MainButtonClick" Content="Выйти из аккаунта"/>
+                                    <Button Click="OpenAdminPanel" Content="admin panel"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Margin="10" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20" Grid.Column="1">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>Имя:</TextBlock>
+                                        <TextBlock Margin="40 0 0 0">Твоё имя</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center">Изменить:</TextBlock>
+                                        <TextBox x:Name="PersonNameAccount" Margin="10 0 0 0" Width="200px"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>День рожденья:</TextBlock>
+                                        <TextBlock Margin="40 0 0 0">23.23.2323</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center">Изменить:</TextBlock>
+                                        <DatePicker x:Name="PersonBirthdayAccount"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>Telegram:</TextBlock>
+                                        <TextBlock Margin="40 0 0 0">@hi</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center">Изменить:</TextBlock>
+                                        <TextBox x:Name="PersonTelegramAccount" Margin="10 0 0 0" Width="200px"/>
+                                    </StackPanel>
+                                    <Button Margin="10">Сохранить аккаунт</Button>
+                                </StackPanel>
                             </Border>
                         </Grid>
                     </Grid>
