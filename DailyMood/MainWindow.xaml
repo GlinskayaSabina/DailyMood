@@ -9,9 +9,10 @@
         xmlns:svg="http://sharpvectors.codeplex.com/svgc/" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         Title="Daylimood" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" >
 
-    <Grid Background="#dccfda" Margin="0,0,0,-0.4">
+  
+        <Grid Background="#dccfda" Margin="0,0,0,-0.4">
 
-        <Grid x:Name ="GridSingPage" Visibility="Visible">
+        <Grid x:Name ="GridSingPage" Visibility="Hidden">
             <!--Авторизация -->
             <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
                 <Border.Effect>
@@ -88,7 +89,7 @@
             </Border>
         </Grid>
         <!-- HomePage-->
-        <Grid x:Name="GridHomePage" Visibility="Collapsed">
+        <Grid x:Name="GridHomePage" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
@@ -299,9 +300,12 @@
                             <ItemsControl x:Name="Notes">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Margin="0 10" BorderBrush="Black" BorderThickness="0 0 0 1">
+                                        <Border Margin="0 10 0 0" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                             <StackPanel>
-                                                <TextBlock Grid.Row="0" Text="{Binding Path=Date}"/>
+                                                <DockPanel>
+                                                    <TextBlock>Дата: </TextBlock>
+                                                    <TextBlock FontWeight="Bold" Grid.Row="0" Text="{Binding Path=Date}"/>
+                                                </DockPanel>
                                                 <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.RowSpan="2" Text="{Binding Path=History}"/>
                                             </StackPanel>
                                         </Border>
