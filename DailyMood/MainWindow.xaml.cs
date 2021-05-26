@@ -24,10 +24,10 @@ namespace DailyMood
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private int _emoji = 0;
         private int _userid;
         private string _login = "";
+        private Account _account;
 
         public List<Statistic> StatisticList { get; set; }
         
@@ -111,7 +111,6 @@ namespace DailyMood
                     GridSingPage.Visibility = Visibility.Collapsed;
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Visible;
-                  
                     break;
                 case 4:
                     GridJournalPage.Visibility = Visibility.Visible;
@@ -149,13 +148,9 @@ namespace DailyMood
                     GridSingPage.Visibility = Visibility.Visible;
                     GridAdminPage.Visibility = Visibility.Collapsed;
                     break;
-
                 default:
                     break;
-
-
             }
-
         }
 
         private async void Authorization(object sender, RoutedEventArgs e)
@@ -177,8 +172,18 @@ namespace DailyMood
                         GridSingInPage.Visibility = Visibility.Collapsed;
                         GridHomePage.Visibility = Visibility.Visible;
                         _userid = await UserOperations.GetUserId(login);
-                        StatisticList = await StatisticOperations.GetUserStatistics(_userid);
+                        _account = await AccountOperations.GetAccountByUserId(_userid);
+                        if (_account == null)
+                        {
+                            await AccountOperations.CreateAccount(_userid);
+                            _account = await AccountOperations.GetAccountByUserId(_userid);
+                        }
+                        List<Statistic> list = await StatisticOperations.GetUserStatistics(_userid);
+                        StatisticList = list != null ? list : new List<Statistic>();
                         UpdateChart();
+                        PersonNameAccount.Text = _account.Name;
+                        PersonTelegramAccount.Text = _account.Telegram;
+                        PersonYearsAccount.Text = _account.Years.ToString();
                         Notes.ItemsSource = StatisticList;
                         LoginFieldAuth.Text = "";
                         PasswordFieldAuth.Password = "";
@@ -187,7 +192,7 @@ namespace DailyMood
                         MessageBox.Show("Неверный логин или пароль");
                         break;
                     default:
-                        MessageBox.Show("Необработанное исключение в функции Authorization");
+                        MessageBox.Show("Server error: Authorization component.");
                         break;
                 }
             }
@@ -200,7 +205,17 @@ namespace DailyMood
             string password = PasswordFieldReg.Text;
             string confirmPassword = ConfirmPasswordFieldReg.Text;
 
-            if(login == "" || password == "" || confirmPassword == "")
+            if (login.Length > 20 || password.Length > 20)
+            {
+                MessageBox.Show("Длина логина и пароля не должна превышать 20 символов.");
+                LoginFieldReg.Text = "";
+                PasswordFieldReg.Text = "";
+                ConfirmPasswordFieldReg.Text = "";
+                LoginFieldReg.Focus();
+                return;
+            }
+
+            if (login == "" || password == "" || confirmPassword == "")
             {
                 MessageBox.Show("Заполните все поля");
                 return;
@@ -224,8 +239,8 @@ namespace DailyMood
                 case OperationsResponse.Ok:
                     GridSingUpPage.Visibility = Visibility.Collapsed;
                     GridSingPage.Visibility = Visibility.Collapsed;
-                    GridSingInPage.Visibility = Visibility.Collapsed;
-                    GridHomePage.Visibility = Visibility.Visible;
+                    GridSingInPage.Visibility = Visibility.Visible;
+                    GridHomePage.Visibility = Visibility.Collapsed;
                     await AccountOperations.CreateAccount(id);
                     LoginFieldReg.Text = "";
                     PasswordFieldReg.Text = "";
@@ -235,7 +250,7 @@ namespace DailyMood
                     MessageBox.Show("Пользователь с таким логином уже существует!");
                     break;
                 default:
-                    MessageBox.Show("Необработанное исключение в функции Authorization");
+                    MessageBox.Show("Server error: Authorization component.");
                     break;
             }
         }
@@ -265,6 +280,22 @@ namespace DailyMood
                 ConfirmPasswordFieldReg.IsEnabled = true;
                 LogIn.IsEnabled = true;
                 registration.IsEnabled = true;
+            }
+        }
+
+        private async void ChangeAccount(object sender, RoutedEventArgs e)
+        {
+            string name = PersonNameAccountTextBox.Text != "" ? PersonNameAccountTextBox.Text : _account.Name;
+            int years;
+            if(!Int32.TryParse(PersonYearsAccountTextBox.Text, out years)) years = _account.Years;
+            string telegram = PersonTelegramAccountTextBox.Text != "" ? PersonTelegramAccountTextBox.Text : _account.Telegram;
+            OperationsResponse response = await AccountOperations.EditAccount(_userid, name, years, telegram);
+            if(response == OperationsResponse.Ok)
+            {
+                _account = await AccountOperations.GetAccountByUserId(_userid);
+                PersonNameAccount.Text = _account.Name;
+                PersonTelegramAccount.Text = _account.Telegram;
+                PersonYearsAccount.Text = _account.Years.ToString();
             }
         }
 
@@ -307,20 +338,19 @@ namespace DailyMood
         private async void SaveAccount(object sender, RoutedEventArgs e)
         {
             string personname = PersonNameAccount.Text;
-            string personbirthday = PersonBirthdayAccount.Text;
+            int personyears = Int32.Parse(PersonYearsAccount.Text);
             string persontelegram = PersonTelegramAccount.Text;
 
             int userId = await UserOperations.GetUserId(_login);
 
-            OperationsResponse responce = await AccountOperations.EditAccount(userId, personname, personbirthday, persontelegram);
+            OperationsResponse responce = await AccountOperations.EditAccount(userId, personname, personyears, persontelegram);
 
             if (responce == OperationsResponse.ServerError) MessageBox.Show("Server error");
 
             PersonNameAccount.Text = "";
-            PersonBirthdayAccount.Text = "";
+            PersonYearsAccount.Text = "";
             PersonTelegramAccount.Text = "";
 
         }
-    }
-    
+    }   
 }

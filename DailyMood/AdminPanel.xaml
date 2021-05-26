@@ -19,22 +19,22 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer 
-                            Grid.Row="1" 
-                            Grid.Column="1" 
-                            Style="{StaticResource MaterialDesignScrollViewer}"
-                            VerticalScrollBarVisibility="Auto">
+            Grid.Row="1" 
+            Grid.Column="1" 
+            Style="{StaticResource MaterialDesignScrollViewer}"
+            VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="Accounts">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Margin="0 10 0 0" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontWeight="Bold" Text="{Binding Path=Name}"/>
-                                <TextBlock Margin="20 0 0 0" Text="{Binding Path=Birthday}"/>
-                                <TextBlock Margin="20 0 0 0" Text="{Binding Path=Phone}"/>
+                                <TextBlock Margin="20 0 0 0" Text="{Binding Path=Years}"/>
+                                <TextBlock Margin="20 0 0 0" Text="{Binding Path=Telegram}"/>
                                 <TextBlock Margin="20 0 0 0" Text="{Binding Path=UserId}"/>
+                                <Button Uid="{Binding Path=UserId}" Click="EditAccount">Edit</Button>
                             </StackPanel>
                         </Border>
-
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

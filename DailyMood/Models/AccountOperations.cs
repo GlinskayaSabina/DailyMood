@@ -32,8 +32,8 @@ namespace WaterBalance.Models.DataOperations
                         Account acc = new Account
                         {
                             Name = "Новый пользователь",
-                            Birthday = DateTime.Now,
-                            Phone = "Ваш номер",
+                            Years = 0,
+                            Telegram = "Не указан",
                             UserId = userId
                         };
                         db.Accounts.Add(acc);
@@ -75,7 +75,7 @@ namespace WaterBalance.Models.DataOperations
         //    });
         //}
 
-        public static async Task<OperationsResponse> EditAccount(int userId, string name, string birthday, string phone)
+        public static async Task<OperationsResponse> EditAccount(int userId, string name, int years, string telegram)
         {
             return await Task.Run(() =>
             {
@@ -88,8 +88,8 @@ namespace WaterBalance.Models.DataOperations
                         if(acc != null)
                         {
                             acc.Name = name;
-                            acc.Phone = phone;
-                            acc.Birthday = DateTime.Parse(birthday);
+                            acc.Years = years;
+                            acc.Telegram = telegram;
                             db.SaveChanges();
                             return OperationsResponse.Ok;
                         }
@@ -103,5 +103,23 @@ namespace WaterBalance.Models.DataOperations
             });
         }
 
+        public static async Task<Account> GetAccountByUserId(int userId)
+        {
+            return await Task.Run(() =>
+            {
+                try
+                {
+                    using (DataEntity db = new DataEntity())
+                    {
+                        Account acc = db.Accounts.FirstOrDefault(a => a.UserId == userId);
+                        return acc;
+                    }
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            });
+        }
     }
 }

@@ -29,14 +29,13 @@ namespace DailyMood
             Accounts.ItemsSource = AccountOperations.GetAllAccounts();
         }
 
-        private async void AddNewLine()
+        private async void EditAccount(object sender, RoutedEventArgs e)
         {
-            
-            // стягиваешь поля
-
-            // OperationsResponse response = await AccountOperations.CreateAccount(userId, Name, phone, dateTime);
-            Accounts.ItemsSource = AccountOperations.GetAllAccounts();
+            int userId = Int32.Parse((sender as Button).Uid);
+            Account account = await AccountOperations.GetAccountByUserId(userId);
+            EditAccount window = new EditAccount(account, ref Accounts);
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.Show();
         }
-
     }
 }

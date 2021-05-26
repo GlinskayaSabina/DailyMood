@@ -96,3 +96,5 @@ D:\DailyMood\DailyMood\bin\Debug\System.Numerics.Vectors.xml
 D:\DailyMood\DailyMood\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\DailyMood\DailyMood\obj\Debug\AdminPanel.g.cs
 D:\DailyMood\DailyMood\obj\Debug\AdminPanel.baml
+D:\DailyMood\DailyMood\obj\Debug\EditAccount.g.cs
+D:\DailyMood\DailyMood\obj\Debug\EditAccount.baml
