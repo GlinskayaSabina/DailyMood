@@ -93,23 +93,27 @@ namespace DailyMood
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridSingPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Collapsed;
+                    GridPersonInfo.Visibility = Visibility.Collapsed;
                     break;
                 case 1:
                     GridSingUpPage.Visibility = Visibility.Collapsed;
                     GridSingPage.Visibility = Visibility.Collapsed;
                     GridSingInPage.Visibility = Visibility.Visible;
                     GridHomePage.Visibility = Visibility.Collapsed;
+                    GridPersonInfo.Visibility = Visibility.Collapsed;
                     break;
                 case 2:
                     GridSingUpPage.Visibility = Visibility.Collapsed;
-                    GridSingPage.Visibility = Visibility.Visible;
+                    GridSingPage.Visibility = Visibility.Collapsed;
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Collapsed;
+                    GridPersonInfo.Visibility = Visibility.Visible;
                     break;
                 case 3:
                     GridSingUpPage.Visibility = Visibility.Collapsed;
                     GridSingPage.Visibility = Visibility.Collapsed;
                     GridSingInPage.Visibility = Visibility.Collapsed;
+                    GridPersonInfo.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Visible;
                     break;
                 case 4:
@@ -148,6 +152,13 @@ namespace DailyMood
                     GridSingPage.Visibility = Visibility.Visible;
                     GridAdminPage.Visibility = Visibility.Collapsed;
                     break;
+                case 10:
+                    GridSingUpPage.Visibility = Visibility.Collapsed;
+                    GridSingPage.Visibility = Visibility.Visible;
+                    GridSingInPage.Visibility = Visibility.Collapsed;
+                    GridPersonInfo.Visibility = Visibility.Collapsed;
+                    GridHomePage.Visibility = Visibility.Collapsed;
+                    break;              
                 default:
                     break;
             }
@@ -239,8 +250,9 @@ namespace DailyMood
                 case OperationsResponse.Ok:
                     GridSingUpPage.Visibility = Visibility.Collapsed;
                     GridSingPage.Visibility = Visibility.Collapsed;
-                    GridSingInPage.Visibility = Visibility.Visible;
+                    GridSingInPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Collapsed;
+                    GridPersonInfo.Visibility = Visibility.Visible;
                     await AccountOperations.CreateAccount(id);
                     LoginFieldReg.Text = "";
                     PasswordFieldReg.Text = "";

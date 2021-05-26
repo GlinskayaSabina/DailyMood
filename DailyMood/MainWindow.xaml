@@ -12,7 +12,7 @@
   
         <Grid Background="#dccfda" Margin="0,0,0,-0.4">
 
-        <Grid x:Name ="GridSingPage" Visibility="Visible">
+        <Grid x:Name ="GridSingPage" Visibility="Collapsed">
             <!--Авторизация -->
             <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
                 <Border.Effect>
@@ -29,14 +29,14 @@
             </Border>
         </Grid>
         <!-- SingInPage-->
-        <Grid x:Name="GridSingInPage" Visibility="Hidden">
+        <Grid x:Name="GridSingInPage" Visibility="Collapsed">
             <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="25" Color="#9e95a3" ShadowDepth="0"></DropShadowEffect>
                 </Border.Effect>
                 <StackPanel>
                     <!-- backButton-->
-                    <Button Uid="2" Click="MainButtonClick" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button Uid="10" Click="MainButtonClick" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
                         <svg:SvgViewbox Source="./assets/arrow.svg" RenderTransformOrigin="0.5,0.5">
                             <svg:SvgViewbox.RenderTransform>
                                 <TransformGroup>
@@ -50,21 +50,21 @@
                     </Button>
 
                     <TextBlock Text="Авторизация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
-                    <TextBox x:Name="LoginFieldAuth" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <PasswordBox x:Name="PasswordFieldAuth" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                    <TextBox x:Name="LoginFieldAuth" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <PasswordBox x:Name="PasswordFieldAuth" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                     <Button Uid="3" Click="Authorization"  x:Name="LogIn" Margin="0 12 0 12" Content="Войти"></Button>
                 </StackPanel>
             </Border>
         </Grid>
         <!-- SingUpPage-->
-        <Grid x:Name="GridSingUpPage" Visibility="Hidden">
+        <Grid x:Name="GridSingUpPage" Visibility="Collapsed">
             <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="25" Color="#9e95a3" ShadowDepth="0"></DropShadowEffect>
                 </Border.Effect>
                 <StackPanel>
                     <!-- backButton-->
-                    <Button Uid="2" Click="MainButtonClick" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button Uid="10" Click="MainButtonClick" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}">
                         <svg:SvgViewbox Source="./assets/arrow.svg" RenderTransformOrigin="0.5,0.5">
                             <svg:SvgViewbox.RenderTransform>
                                 <TransformGroup>
@@ -78,17 +78,39 @@
                     </Button>
 
                     <TextBlock Text="Регистрация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"></TextBlock>
-                    <TextBox x:Name="LoginFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox x:Name="PasswordFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox x:Name="ConfirmPasswordFieldReg" Cursor="IBeam" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <Button Uid="2" Click="Register" x:Name="registration" Margin="0 12 0 12" Content="Зарегистрироваться"></Button>
+                    <TextBox x:Name="LoginFieldReg" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="PasswordFieldReg" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="ConfirmPasswordFieldReg" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Uid="2" Click="Register" x:Name="registration" Margin="0 20 0 12" Content="Зарегистрироваться"></Button>
 
 
                 </StackPanel>
             </Border>
         </Grid>
+            <!--gird more person info -->
+        <Grid x:Name="GridPersonInfo" Visibility="Collapsed">
+            <Border MinWidth="400" Margin="15" Background="white" VerticalAlignment="Center" Padding="20" MaxWidth="550" CornerRadius="13">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="#9e95a3" ShadowDepth="0"></DropShadowEffect>
+                </Border.Effect>
+                
+                <StackPanel>
+                   
+                    <TextBlock Text="Заполните поля" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"/>
+                    <TextBox MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите ваше Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите ваш возраст" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите Telegram" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Uid="10" Content="Сохранить" Margin="0 20 0 0"></Button>
+                </StackPanel>
+            </Border>
+          
+            
+        </Grid>
+            
+            
+            
         <!-- HomePage-->
-        <Grid x:Name="GridHomePage" Visibility="Collapsed">
+        <Grid x:Name="GridHomePage" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="4*"/>
@@ -148,7 +170,7 @@
                 <Grid x:Name="GridPage" Visibility="Visible">
                     
                     <!--Journal page -->
-                    <Grid x:Name="GridJournalPage" Visibility="Visible">
+                    <Grid x:Name="GridJournalPage" Visibility="Collapsed">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -167,6 +189,7 @@
                                 <RowDefinition Height="30px"/>
                                 <RowDefinition Height="110px"/>
                                 <RowDefinition Height="100px"/>
+                                <RowDefinition Height="110px"/>
                                 <RowDefinition Height="110px"/>
                             </Grid.RowDefinitions>
 
@@ -260,13 +283,37 @@
                                
                             </Border>
 
+                            <Border Grid.Row="4"  Margin="0 10 0 0"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
+
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="8*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="Пройдите тест" HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
+                                        <Button Grid.Column="1" HorizontalAlignment="Center" Width="60" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Content="Да"></Button>
+                                        <Button Grid.Column="2" HorizontalAlignment="Center" Width="60" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Content="Нет"></Button>
+                                    </Grid>
+                                    <TextBlock Grid.Row="1" Text="TExt" HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
+
+                                   
+                                </Grid>
+                            </Border>
+
                         </Grid>
 
 
                     </Grid>
 
                     <!--Statistic page -->
-                    <Grid x:Name="GridStaticticPage" Visibility="Hidden">
+                    <Grid x:Name="GridStaticticPage" Visibility="Visible">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="18*"/>
@@ -278,7 +325,7 @@
                             <RowDefinition Height="18*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
-
+                        <TextBlock Grid.Column="1"  Text="Статистика вашего настроения" HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
                         <lvc:CartesianChart x:Name="Chart" Grid.Row="1" Grid.Column="1"/>
                     </Grid>
 
@@ -382,6 +429,7 @@
                 </Grid>
             </Border>
         </Grid>
+            <!--Grid Admin Panel -->
         <Grid x:Name="GridAdminPage" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>

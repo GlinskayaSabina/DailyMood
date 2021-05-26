@@ -32,7 +32,7 @@
                                 <TextBlock Margin="20 0 0 0" Text="{Binding Path=Years}"/>
                                 <TextBlock Margin="20 0 0 0" Text="{Binding Path=Telegram}"/>
                                 <TextBlock Margin="20 0 0 0" Text="{Binding Path=UserId}"/>
-                                <Button Uid="{Binding Path=UserId}" Click="EditAccount">Edit</Button>
+                                <Button Uid="{Binding Path=UserId}" Click="EditAccount"  Margin="25 0 0 0" >Edit</Button>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
