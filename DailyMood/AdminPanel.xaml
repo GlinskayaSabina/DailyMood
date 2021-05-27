@@ -35,11 +35,23 @@
                         <DataTemplate>
                             <Border Margin="0 10 20 0" Padding="20 10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <Grid>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontWeight="Bold" Text="{Binding Path=Name}"/>
-                                        <TextBlock Margin="20 0 0 0" Text="{Binding Path=Years}"/>
-                                        <TextBlock Margin="20 0 0 0" Text="{Binding Path=Telegram}"/>
-                                        <TextBlock Margin="20 0 0 0" Text="{Binding Path=UserId}"/>
+                                    <StackPanel Orientation="Vertical">
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Имя: "/>
+                                            <TextBlock Text="{Binding Path=Name}"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Возраст: "/>
+                                            <TextBlock Text="{Binding Path=Years}"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Телеграм: "/>
+                                            <TextBlock Text="{Binding Path=Telegram}"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Id: "/>
+                                            <TextBlock Text="{Binding Path=UserId}"/>
+                                        </DockPanel>
                                     </StackPanel>
                                     <Button Uid="{Binding Path=UserId}" Click="EditAccount"  HorizontalAlignment="Right" Margin="25 0 0 0" >Edit</Button>
                                 </Grid>
@@ -50,15 +62,15 @@
             </ScrollViewer>
             <Button Grid.Row="1" HorizontalAlignment="Center" Margin="0 10" Click="OpenChangeTestsWindow">Изменить тест</Button>
         </Grid>
-
+           <!--Ghange test-->
         <Grid 
             Visibility="Collapsed"
             x:Name="ChangeTestsWindow"
             Grid.Row="1" 
             Grid.Column="1" >
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="60px"/>
+                <RowDefinition />
+                <RowDefinition Height="90px"/>
             </Grid.RowDefinitions>
             <ScrollViewer 
             Grid.Row="0"
@@ -69,22 +81,37 @@
                         <DataTemplate>
                             <Border Margin="0 10 20 0" Padding="20 10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <Grid>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontWeight="Bold" Text="{Binding Path=Value}"/>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="100px"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel >
+                                        <TextBlock TextWrapping="Wrap" FontWeight="Bold" Text="{Binding Path=Value}"/>
                                     </StackPanel>
-                                    <Button Uid="{Binding Path=Id}" Click="DeleteTest"  HorizontalAlignment="Right" Margin="25 0 0 0" >Delete</Button>
+                                    <Button Grid.Column="1" Uid="{Binding Path=Id}" Click="DeleteTest"  HorizontalAlignment="Right" Margin="25 0 0 0" >Delete</Button>
                                 </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-            <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Row="1">
-                <TextBlock>Вопрос:</TextBlock>
-                <TextBox Margin="10" x:Name="TestInputField" Width="300px"/>
-                <Button Margin="10" Click="AddQuestion">Добавить вопрос</Button>
-                <Button Margin="10" Click="OpenChangeAccountsWindow">Изменить пользователей</Button>
-            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200px"/>
+                </Grid.ColumnDefinitions>
+                <Border HorizontalAlignment="Stretch" Grid.Column="0" >
+                    <StackPanel  Orientation="Horizontal">
+                        <TextBlock>Вопрос:</TextBlock>
+                        <TextBox TextWrapping="Wrap" Margin="10" x:Name="TestInputField"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                    <Button Margin="5" Click="AddQuestion">Добавить вопрос</Button>
+                    <Button Margin="5" Click="OpenChangeAccountsWindow">Изменить пользователей</Button>
+                </StackPanel>
+            </Grid>
+            
         </Grid>
     </Grid>
 </Window>
