@@ -97,10 +97,10 @@
                 <StackPanel>
                    
                     <TextBlock Text="Заполните поля" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 12"/>
-                    <TextBox MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите ваше Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите ваш возраст" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите Telegram" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <Button Uid="10" Content="Сохранить" Margin="0 20 0 0"></Button>
+                    <TextBox x:Name="AccountNameField" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите ваше Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="AccountYearsField" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите ваш возраст" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox x:Name="AccountTelegramField" MaxLength="20" Cursor="IBeam" materialDesign:HintAssist.Hint="Введите Telegram" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Uid="10" Click="AddPersonalInformation"  Content="Сохранить" Margin="0 20 0 0"></Button>
                 </StackPanel>
             </Border>
           
@@ -199,7 +199,7 @@
                                     <TextBlock x:Name="MyState" HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
-                            
+
                             <Border Padding="10" Background="white" HorizontalAlignment="Left" CornerRadius="20" Grid.Row="1" Width="530">
                                 <StackPanel >
 
@@ -277,39 +277,34 @@
 
                                 </StackPanel>
                             </Border>
-                           
+
                             <Border  Margin="0 10 0 0" Grid.Row="3"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <Button Click="SaveNote">Сохранить заметку</Button>
-                               
+
                             </Border>
 
                             <Border Grid.Row="4"  Margin="0 10 0 0"  Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
 
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="8*"/>
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
-                                            
+
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="Пройдите тест" HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-                                        <Button Grid.Column="1" HorizontalAlignment="Center" Width="60" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Content="Да"></Button>
-                                        <Button Grid.Column="2" HorizontalAlignment="Center" Width="60" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Content="Нет"></Button>
+                                        <Button Grid.Column="1" Click="TestAnswerBtn" HorizontalAlignment="Center" Width="60" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Content="Да"></Button>
+                                        <Button Grid.Column="2" Click="TestAnswerBtn" HorizontalAlignment="Center" Width="60" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Content="Нет"></Button>
                                     </Grid>
-                                    <TextBlock Grid.Row="1" Text="TExt" HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
-
-                                   
+                                    <TextBlock Grid.Row="1" x:Name="TestValue" HorizontalAlignment="Left" FontSize="20" Margin="13 0 0 0" FontWeight="Thin"></TextBlock>
                                 </Grid>
                             </Border>
-
                         </Grid>
-
-
                     </Grid>
 
                     <!--Statistic page -->
@@ -359,7 +354,6 @@
                                                 <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.RowSpan="2" Text="{Binding Path=History}"/>
                                             </StackPanel>
                                         </Border>
-                                        
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
@@ -390,7 +384,7 @@
                             <Border Margin="10" Padding="10" Background="white" HorizontalAlignment="Stretch" CornerRadius="20">
                                 <StackPanel>
                                     <Button Margin="0 10 0 10" Uid="8"  Click="MainButtonClick" Content="Выйти из аккаунта"/>
-                                    <Button Click="OpenAdminPanel" Content="admin panel"/>
+                                    <Button x:Name="OpenAdminPanelBtn" Click="OpenAdminPanel" Content="admin panel"/>
                                 </StackPanel>
                             </Border>
 

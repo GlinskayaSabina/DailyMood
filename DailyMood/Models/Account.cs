@@ -12,6 +12,7 @@ namespace DailyMood.Models
         public string Name { get; set; }
         public int Years { get; set; }
         public string Telegram { get; set; }
+        public string Role { get; set; }
         public int UserId { get; set; }
     }
 }

@@ -28,13 +28,16 @@ namespace DailyMood
         private int _userid;
         private string _login = "";
         private Account _account;
+        private int testNumber = 1;
 
         public List<Statistic> StatisticList { get; set; }
-        
+        public List<Test> Tests { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            Tests = TestOperations.GetAllTests();
+            TestValue.Text = Tests[testNumber - 1].Value;
         }
 
         private void UpdateChart()
@@ -189,6 +192,7 @@ namespace DailyMood
                             await AccountOperations.CreateAccount(_userid);
                             _account = await AccountOperations.GetAccountByUserId(_userid);
                         }
+                        OpenAdminPanelBtn.Visibility = _account.Role == "admin" ? Visibility.Visible : Visibility.Collapsed;
                         List<Statistic> list = await StatisticOperations.GetUserStatistics(_userid);
                         StatisticList = list != null ? list : new List<Statistic>();
                         UpdateChart();
@@ -241,7 +245,7 @@ namespace DailyMood
 
             Loading(true);
             OperationsResponse response = await UserOperations.CreateUser(login, hashedPassword);
-            int id = await UserOperations.GetUserId(login);
+            _userid = await UserOperations.GetUserId(login);
 
             Loading(false);
 
@@ -253,7 +257,6 @@ namespace DailyMood
                     GridSingInPage.Visibility = Visibility.Collapsed;
                     GridHomePage.Visibility = Visibility.Collapsed;
                     GridPersonInfo.Visibility = Visibility.Visible;
-                    await AccountOperations.CreateAccount(id);
                     LoginFieldReg.Text = "";
                     PasswordFieldReg.Text = "";
                     ConfirmPasswordFieldReg.Text = "";
@@ -363,6 +366,37 @@ namespace DailyMood
             PersonYearsAccount.Text = "";
             PersonTelegramAccount.Text = "";
 
+        }
+        private async void AddPersonalInformation(object sender, RoutedEventArgs e)
+        {
+            string name = AccountNameField.Text;
+            int years;
+            if (Int32.TryParse(AccountYearsField.Text, out int val)) years = val;
+            else years = 0;
+            string telegram = AccountTelegramField.Text;
+            OperationsResponse response = await AccountOperations.CreateAccount(_userid, name, telegram, years);
+
+            if (response == OperationsResponse.Ok)
+            {
+                GridSingUpPage.Visibility = Visibility.Collapsed;
+                GridSingPage.Visibility = Visibility.Collapsed;
+                GridSingInPage.Visibility = Visibility.Visible;
+                GridPersonInfo.Visibility = Visibility.Collapsed;
+                GridHomePage.Visibility = Visibility.Collapsed;
+            }
+            else MessageBox.Show("Ваш аккаунт не создался, попробуйте еще раз!");
+        }
+
+        private void TestAnswerBtn(object sender, RoutedEventArgs e)
+        {
+            testNumber = testNumber + 1;
+            if (testNumber != Tests.Count) TestValue.Text = Tests[testNumber - 1].Value;
+            else
+            {
+                MessageBox.Show("Вы прошли тест! Результаты: Вы довольно беспокойный человек.Чем больше у вас баллов, тем более выражен ваш персональный уровень беспокойства.Вы должны понимать, что нельзя изменить вашу индивидуальную степень подверженности стрессам, но можно в значительной степени защитить себя от психотравмирующих воздействий и раздражителей, если научиться правильно расслабляться и мыслить, или просто подавлять свои страхи.Один из самых простых способов расслаблять свой мозг - это научиться мечтать.Также полезно переключатся из одного вида деятельности в другой, иногда даже совсем противоположный первому.Надо уметь выделять время для отдыха и время, когда вы будете наедине с собой.Овладев этими способами расслабления и стабилизации своего напряжения, вы сможете справляться со многими стрессовыми ситуациями, прибегая каждый раз к помощи скрытых ресурсов своего организма.");
+                testNumber = 1;
+                TestValue.Text = Tests[testNumber - 1].Value;
+            }
         }
     }   
 }

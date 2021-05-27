@@ -27,6 +27,7 @@ namespace DailyMood
             
             InitializeComponent();
             Accounts.ItemsSource = AccountOperations.GetAllAccounts();
+            Tests.ItemsSource = TestOperations.GetAllTests();
         }
 
         private async void EditAccount(object sender, RoutedEventArgs e)
@@ -36,6 +37,42 @@ namespace DailyMood
             EditAccount window = new EditAccount(account, ref Accounts);
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.Show();
+        }
+
+
+        private async void DeleteTest(object sender, RoutedEventArgs e)
+        {
+            int id = Int32.Parse((sender as Button).Uid);
+            await TestOperations.DeleteTest(id);
+            Tests.ItemsSource = TestOperations.GetAllTests();
+            
+        }
+
+        private async void AddQuestion(object sender, RoutedEventArgs e)
+        {
+            string question = TestInputField.Text;
+            if (question == "")
+            {
+                MessageBox.Show("Введите вопрос!");
+                return;
+            }
+
+            OperationsResponse response = await TestOperations.CreateTest(question);
+            if (response != OperationsResponse.Ok) MessageBox.Show("Серверная ошибка. Не получилось добавить вопрос!");
+            Tests.ItemsSource = TestOperations.GetAllTests();
+            TestInputField.Text = "";
+        }
+
+        private void OpenChangeAccountsWindow(object sender, RoutedEventArgs e)
+        {
+            ChangeAccountsWindow.Visibility = Visibility.Visible;
+            ChangeTestsWindow.Visibility = Visibility.Collapsed;
+        }
+
+        private void OpenChangeTestsWindow(object sender, RoutedEventArgs e)
+        {
+            ChangeAccountsWindow.Visibility = Visibility.Collapsed;
+            ChangeTestsWindow.Visibility = Visibility.Visible;
         }
     }
 }

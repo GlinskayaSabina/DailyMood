@@ -34,6 +34,7 @@ namespace WaterBalance.Models.DataOperations
                             Name = "Новый пользователь",
                             Years = 0,
                             Telegram = "Не указан",
+                            Role = "user",
                             UserId = userId
                         };
                         db.Accounts.Add(acc);
@@ -48,32 +49,33 @@ namespace WaterBalance.Models.DataOperations
             });
         }
 
-        //public static async Task<OperationsResponse> CreateAccount(int userId, string name, string phone, DateTime birthday)
-        //{
-        //    return await Task.Run(() =>
-        //    {
-        //        try
-        //        {
-        //            using (DataEntity db = new DataEntity())
-        //            {
-        //                Account acc = new Account
-        //                {
-        //                    Name = name,
-        //                    Birthday = birthday,
-        //                    Phone = phone,
-        //                    UserId = userId
-        //                };
-        //                db.Accounts.Add(acc);
-        //                db.SaveChanges();
-        //                return OperationsResponse.Ok;
-        //            }
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            return OperationsResponse.ServerError;
-        //        }
-        //    });
-        //}
+        public static async Task<OperationsResponse> CreateAccount(int userId, string name, string telegram, int years)
+        {
+            return await Task.Run(() =>
+            {
+                try
+                {
+                    using (DataEntity db = new DataEntity())
+                    {
+                        Account acc = new Account
+                        {
+                            Name = name,
+                            Years = years,
+                            Telegram = telegram,
+                            Role = "user",
+                            UserId = userId
+                        };
+                        db.Accounts.Add(acc);
+                        db.SaveChanges();
+                        return OperationsResponse.Ok;
+                    }
+                }
+                catch (Exception e)
+                {
+                    return OperationsResponse.ServerError;
+                }
+            });
+        }
 
         public static async Task<OperationsResponse> EditAccount(int userId, string name, int years, string telegram)
         {

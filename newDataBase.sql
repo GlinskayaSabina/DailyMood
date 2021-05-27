@@ -1,6 +1,8 @@
-drop table Users
-drop table [Statistics]
+
 drop table Accounts
+drop table [Statistics]
+drop table Users
+drop table Tests
  
 create table Users
 (
@@ -25,5 +27,12 @@ create table Accounts
 [Name] nvarchar(100) not null,
 [Years] int not null,
 [Telegram] nvarchar(100) not null,
+[Role] nvarchar(10) not null,
 [UserId] int foreign key references Users (Id)
+)
+
+create table Tests
+(
+[Id] int identity(1,1) primary key,
+[Value] nvarchar(200) not null
 )
