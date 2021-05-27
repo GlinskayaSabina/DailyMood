@@ -1,4 +1,5 @@
-﻿using DailyMood.Models;
+﻿using DailyMood;
+using DailyMood.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,15 +58,10 @@ namespace WaterBalance.Models.DataOperations
                 {
                     using (DataEntity db = new DataEntity())
                     {
-                        Account acc = new Account
-                        {
-                            Name = name,
-                            Years = years,
-                            Telegram = telegram,
-                            Role = "user",
-                            UserId = userId
-                        };
-                        db.Accounts.Add(acc);
+                        IPrototypy figure = new Account { Role = "user" };
+
+                        IPrototypy clonedFigure = figure.Clone(name, years, telegram, db.Accounts.Count());
+                        db.Accounts.Add((Account)clonedFigure);
                         db.SaveChanges();
                         return OperationsResponse.Ok;
                     }
